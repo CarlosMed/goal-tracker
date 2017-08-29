@@ -2,26 +2,19 @@
 <html>
 
 <head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        body {
-            padding-top: 80px;
-            word-wrap: break-word;
-        }
-    </style>
+    <%- include('component/head'); %>
+    <title>Goal Tracker | Profile</title>
 </head>
 
 <body>
     <div class="container">
-
+        <%- include('component/nav'); %>
+        <br>
         <div class="page-header text-center">
-            <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+            <h1><span class="fa fa-user"></span> Profile Page</h1>
         </div>
-
-        <div class="row">
+        <br>
+        <div class="alert alert-secondary" role="alert">
             <!-- LOCAL INFORMATION -->
             <div class="col-sm-6">
                 <div class="well">
@@ -36,9 +29,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
-
     </div>
 </body>
 

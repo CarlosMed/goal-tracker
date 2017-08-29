@@ -1,4 +1,4 @@
-# Goal Tracker 💪🏽
+# Goal Tracker | Tasky 💪🏽
 
 > Create a simple goal tracking api using node.js or PHP. There is not a right or wrong way to solve this. The purpose of the test is to gain some insight into how you think and program. Please spend no more than 3 hours. You can use any existing frameworks or libraries.
 
