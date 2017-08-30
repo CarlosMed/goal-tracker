@@ -17,15 +17,12 @@ module.exports = (app, passport) => {
     // PROFILE SECTION
     // route middleware to verify if logged in (the isLoggedIn function below)
     app.route('/profile').get(isLoggedIn, routeController.profilePage);
-    app.route('/goals').get(isLoggedIn, routeController.goalsPage);
+    app.route('/goals')
+        .get(isLoggedIn, routeController.goalsPage)
+        .post(routeController.goalsPost);
 
     // LOGOUT
     app.route('/logout').get(routeController.logout);
-
-    // LOCALLY
-    app.route('/connect/local').get(routeController.connectLocal);
-
-    app.route('/connect/local').post(routeController.connectLocalAuth);
 };
 
 // route middleware to make sure a user is logged in

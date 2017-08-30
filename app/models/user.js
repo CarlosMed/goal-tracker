@@ -6,9 +6,8 @@ const userSchema = mongoose.Schema({
     local: {
         email: String,
         password: String,
-    },
-    goals: {
-        goal: String,
+        goal: String
+
     }
 });
 

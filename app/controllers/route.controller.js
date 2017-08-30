@@ -1,4 +1,5 @@
 const passport = require('passport');
+const User = require('../models/user');
 
 const homePage = (req, res) => {
     res.render('index.ejs'); // load the index.ejs file
@@ -16,6 +17,18 @@ const goalsPage = (req, res) => {
     });
 }
 
+const goalsPost = (req, res) => {
+    const newUser = new User();
+
+    newUser.local.goal = goal;
+    newUser.save((err, data) => {
+        if (err)
+            console.log(err)
+        console.log({added: data})
+    })
+    res.send('hello')
+}
+
 const loginPage = (req, res) => {
     // render the page and pass in any flash data if it exists
     res.render('login.ejs', {
@@ -26,12 +39,6 @@ const loginPage = (req, res) => {
 const signupPage = (req, res) => {
     res.render('signup.ejs', {
         message: req.flash('signupMessage')
-    });
-}
-
-const connectLocal = (req, res) => {
-    res.render('connect-local.ejs', {
-        message: req.flash('loginMessage')
     });
 }
 
@@ -47,17 +54,10 @@ const signupAuth = passport.authenticate('local-signup', {
     failureFlash: true
 })
 
-const connectLocalAuth = passport.authenticate('local-signup', {
-    successRedirect: '/goals', // redirect to the secure profile
-    failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
-    failureFlash: true // allow flash messages
-})
-
 const logout = (req, res) => {
     req.logout();
     res.redirect('/');
 }
-
 
 module.exports = {
     profilePage,
@@ -65,9 +65,8 @@ module.exports = {
     homePage,
     loginPage,
     signupPage,
-    connectLocal,
     loginAuth,
     signupAuth,
-    connectLocalAuth,
+    goalsPost,
     logout
 };
