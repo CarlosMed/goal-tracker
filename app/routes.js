@@ -1,8 +1,9 @@
 const routeController = require('./controllers/route.controller');
 
 module.exports = (app, passport) => {
+
     // HOME PAGE (with login links)
-    app.route('/').get(routeController.homePage);
+    app.route('/').get(routeController.homePage)
 
     // LOGIN
     app.route('/login')
@@ -12,19 +13,26 @@ module.exports = (app, passport) => {
     // SIGNUP
     app.route('/signup')
         .get(routeController.signupPage)
-        .post(routeController.signupAuth);
+        .post(routeController.signupAuth)
 
-    // PROFILE SECTION
-    // route middleware to verify if logged in (the isLoggedIn function below)
-    app.route('/profile').get(isLoggedIn, routeController.profilePage);
+    // After Logging In
+    // route middleware to verify if loggedin (the isLoggedIn function below)
+    app.route('/profile')
+        .get(isLoggedIn, routeController.profilePage);
 
     app.route('/goals')
-        .get(isLoggedIn, routeController.goalsPage);
+        .get(isLoggedIn, routeController.goalsPage)
+
     app.route('/goals/:id')
-        .get(routeController.goalsPost);
+        .put(isLoggedIn, routeController.goalsPost)
+        .get(isLoggedIn, routeController.goalsDelete)
+
+    app.route('/users')
+        .get(routeController.userViews);
 
     // LOGOUT
-    app.route('/logout').get(routeController.logout);
+    app.route('/logout')
+        .get(routeController.logout);
 };
 
 // route middleware to make sure a user is logged in

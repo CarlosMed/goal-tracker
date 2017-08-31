@@ -1,47 +1,67 @@
 const passport = require('passport');
 const User = require('../models/user');
 
+// Render Homepage
 const homePage = (req, res) => {
-    res.render('index.ejs'); // load the index.ejs file
+    res.render('index.ejs');
 }
 
+// Render Profile
 const profilePage = (req, res) => {
     res.render('profile.ejs', {
         user: req.user // get the user out of session and pass to template
     });
 }
 
+// Render Goals
 const goalsPage = (req, res) => {
     res.render('goals.ejs', {
-        user: req.user // get the user out of session and pass to template
+        user: req.user
     });
 }
 
+// Posting Goals
 const goalsPost = (req, res) => {
-    User.find({"_id": req.params.id}, req.body, function (err, user) {
+}
+
+// Update Goals
+const goalsUpdate = (req, res) => {
+}
+
+// Delete Goals
+const goalsDelete = (req, res) => {
+}
+
+
+// TODO: Delete for prod - Just to have a view in the browser of the DB
+const userViews = (req, res) => {
+    User.find(function (err, user) {
         res.json(user);
     });
 }
 
+// Render Login
 const loginPage = (req, res) => {
-    // render the page and pass in any flash data if it exists
     res.render('login.ejs', {
         message: req.flash('loginMessage')
     });
 }
 
+// Render Signup
 const signupPage = (req, res) => {
     res.render('signup.ejs', {
         message: req.flash('signupMessage')
     });
 }
 
+// Login Auth.
 const loginAuth = passport.authenticate('local-login', {
     successRedirect: '/goals', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
 })
 
+// Signup Auth
 const signupAuth = passport.authenticate('local-signup', {
     successRedirect: '/goals',
     failureRedirect: '/signup',
@@ -53,14 +73,18 @@ const logout = (req, res) => {
     res.redirect('/');
 }
 
+
 module.exports = {
-    profilePage,
-    goalsPage,
     homePage,
+    profilePage,
+    goalsPost,
+    goalsUpdate,
+    goalsDelete,
+    goalsPage,
     loginPage,
     signupPage,
     loginAuth,
     signupAuth,
-    goalsPost,
-    logout
+    logout,
+    userViews
 };
