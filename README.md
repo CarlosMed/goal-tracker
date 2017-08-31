@@ -10,7 +10,7 @@
 
 #### Users should be able to:
 
-- [X] create a basic account (email/password only)
+- [X] ~~create a basic account (email/password only)~~
 
 - [ ] create, read, update, delete goals
 
