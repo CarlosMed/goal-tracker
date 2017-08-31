@@ -18,15 +18,9 @@ const goalsPage = (req, res) => {
 }
 
 const goalsPost = (req, res) => {
-    const newUser = new User();
-
-    newUser.local.goal = goal;
-    newUser.save((err, data) => {
-        if (err)
-            console.log(err)
-        console.log({added: data})
-    })
-    res.send('hello')
+    User.find({"_id": req.params.id}, req.body, function (err, user) {
+        res.json(user);
+    });
 }
 
 const loginPage = (req, res) => {
