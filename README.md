@@ -12,17 +12,17 @@
 
 - [X] ~~create a basic account (email/password only)~~
 
-- [ ] create, read, update, delete goals
+- [ ] ~~create, read,~~ update, delete goals
 
 - [ ] set milestones for those goals
     - [ ] For example, milestones for “Be able to run a 10K” might be “Run 10 miles a week”, or “Run a 5K”
 - [ ] track/log progress toward those goals
     - [ ] For example, log “I ran 3 miles today.”
 - [ ] Goals can be of many different and varied data types (nominal, ordinal, interval).
-- [ ] Examples of goals could be:
-    - [ ] Raise my grade in English from a B to an A
-    - [ ] Lose 10 lbs
-    - [ ] Learn Mandarin
-    - [ ] Eat less sugar
-    - [ ] Be able to run a 10K
-    - [ ] Save more money
+- [ ] ~~Examples of goals could be:~~
+    - [ ] ~~Raise my grade in English from a B to an A~~
+    - [ ] ~~Lose 10 lbs~~
+    - [ ] ~~Learn Mandarin~~
+    - [ ] ~~Eat less sugar~~
+    - [ ] ~~Be able to run a 10K~~
+    - [ ] ~~Save more money~~

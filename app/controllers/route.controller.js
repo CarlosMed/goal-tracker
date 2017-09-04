@@ -62,7 +62,7 @@ const goalsUpdate = (req, res) => {
 const goalsDelete = (req, res) => {
     /**
      * pass a function where it looks for an onclick event and delete it based
-     * on which goal was clicked
+     * on which goal was clicked by getting the user.local.goals[i]._id
      */
 }
 
