@@ -1,19 +1,12 @@
-<div class="modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+<br>
+<ul class="list-unstyled">
+    <% if (user) { %>
+        <% for (var i = 0; i < user.local.goals.length; i++) { %>
+            <li class="d-flex justify-content-between">
+                <%=  user.local.goals[i].goal %>
+                <p><span class="text-info">Edit</span> | <a href="/profile/<%= user._id %>" style="text-decoration:none;"><span class="text-danger">Delete</span></a></p>
+            </li>
+            <hr>
+        <% } %>
+    <% } %>
+</ul>

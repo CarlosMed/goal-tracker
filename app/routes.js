@@ -26,11 +26,8 @@ module.exports = (app, passport) => {
         .get(isLoggedIn, routeController.goalsPage)
 
     app.route('/goals/:id')
-        .put(isLoggedIn, routeController.goalsPost)
+        .post(isLoggedIn, routeController.goalsPost)
         .get(isLoggedIn, routeController.goalsPost)
-
-    app.route('/users')
-        .get(routeController.userViews);
 
     // LOGOUT
     app.route('/logout')

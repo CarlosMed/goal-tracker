@@ -15,7 +15,7 @@ const profilePage = (req, res) => {
 
 // Delete Profile
 const profileDelete = (req, res) => {
-    User.remove({"_id": req.params.id}, (err, user) => {
+    User.findByIdAndRemove({"_id": req.params.id}, (err, user) => {
         if (err)
             throw err;
         res.render("index.ejs");
@@ -24,28 +24,46 @@ const profileDelete = (req, res) => {
 
 // Render Goals
 const goalsPage = (req, res) => {
-    res.render('goals.ejs', {
-        user: req.user,
-    });
+    User.find({}, (err, data) => {
+        console.log(data)
+        res.render('goals.ejs', {
+            user: req.user,
+        });
+    })
 }
 
 // Posting Goals
 const goalsPost = (req, res) => {
+    User.findByIdAndUpdate({ "_id": req.params.id }, req.body.goals, (err, user) => {
+        user.local.goals.unshift({ "goal": req.body.goal}); //Adds it to the end
+
+        // Save the user
+        user.save((err) => {
+            User.find({}, (err) =>{
+                if (err)
+                    throw err;
+                res.render("goals.ejs", {
+                    user: req.user,
+                });
+            })
+        })
+    })
 }
 
 // Update Goals
 const goalsUpdate = (req, res) => {
+    /**
+     * use what i did in the goals post fuction to find by id and instead of doing
+     * a POST request it'll be a PUT to push the update
+     */
 }
 
-// Update Goals
+// Delete Goals
 const goalsDelete = (req, res) => {
-}
-
-// TODO: Delete for prod - Just to have a view in the browser of the DB
-const userViews = (req, res) => {
-    User.find(function (err, user) {
-        res.json(user);
-    });
+    /**
+     * pass a function where it looks for an onclick event and delete it based
+     * on which goal was clicked
+     */
 }
 
 // Render Login
@@ -95,5 +113,4 @@ module.exports = {
     loginAuth,
     signupAuth,
     logout,
-    userViews
 };

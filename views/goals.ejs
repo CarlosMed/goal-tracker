@@ -13,6 +13,7 @@
         <h1 class="text-center text-uppercase">Goals</h1>
         <% if (user) { %>
             <small id="profileID" class="form-text text-center text-muted">User Id: <%= user.id %></small>
+            <small id="profileID" class="form-text text-center text-info">Once done posting please refresh to see changes</small>
             <br>
         <% } %>
         <%- include('includes/goalForm'); %>
