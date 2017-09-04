@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://localhost/goal', { useMongoClient: true }); // connect to our database
+mongoose.connect('mongodb://tsky:tsky94@ds119044.mlab.com:19044/tsky', { useMongoClient: true }); // connect to our database
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 require('./config/passport')(passport); // pass passport for configuration

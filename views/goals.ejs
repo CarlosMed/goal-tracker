@@ -11,11 +11,11 @@
         <%- include('includes/nav'); %>
         <br>
         <h1 class="text-center text-uppercase">Goals</h1>
-        <% if (message.length > 0) { %>
+        <% if (user) { %>
             <small id="profileID" class="form-text text-center text-muted">User Id: <%= user.id %></small>
             <br>
-            <%- include('includes/goalForm'); %>
         <% } %>
+        <%- include('includes/goalForm'); %>
         <%- include('includes/goalList'); %>
     </div>
 </body>

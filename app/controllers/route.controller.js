@@ -26,23 +26,11 @@ const profileDelete = (req, res) => {
 const goalsPage = (req, res) => {
     res.render('goals.ejs', {
         user: req.user,
-        added: req.flash('added')
     });
 }
 
 // Posting Goals
 const goalsPost = (req, res) => {
-    var query = { '_id': req.params.id };
-    // req.newData.goals.goal = req.user.goal;
-
-    User.findOneAndUpdate(query, { email: '2test@test.email' }, { upsert: true }, (err, user) => {
-        if (err)
-            console.log(err)
-
-        console.log(user.local.goals)
-        req.flash('added', 'Goals Added'),
-        res.render('goals.ejs');
-    })
 }
 
 // Update Goals
