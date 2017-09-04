@@ -16,7 +16,7 @@
         <br>
         <div class="alert alert-secondary" role="alert">
             <!-- LOCAL INFORMATION -->
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="well">
                     <h3><span class="fa fa-user"></span> Local</h3>
                     <% if (user.local.email) { %>
@@ -25,7 +25,10 @@
                             <strong>email</strong>: <%= user.local.email %><br>
                             <strong>password</strong>: <%= user.local.password %>
                         </p>
-                        <% } %>
+                    <% } %>
+                    <p class="text-center">
+                        <a href="/profile/<%= user._id %>"><button type="button" class="btn btn-danger">Delete Account</button></a>
+                    </p>
                 </div>
             </div>
         </div>

@@ -15,17 +15,19 @@ module.exports = (app, passport) => {
         .get(routeController.signupPage)
         .post(routeController.signupAuth)
 
-    // After Logging In
+    // After Logging In Pages
     // route middleware to verify if loggedin (the isLoggedIn function below)
     app.route('/profile')
-        .get(isLoggedIn, routeController.profilePage);
+        .get(isLoggedIn, routeController.profilePage)
+    app.route('/profile/:id')
+        .get(isLoggedIn, routeController.profileDelete)
 
     app.route('/goals')
         .get(isLoggedIn, routeController.goalsPage)
 
     app.route('/goals/:id')
         .put(isLoggedIn, routeController.goalsPost)
-        .get(isLoggedIn, routeController.goalsDelete)
+        .get(isLoggedIn, routeController.goalsPost)
 
     app.route('/users')
         .get(routeController.userViews);

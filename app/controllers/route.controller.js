@@ -13,25 +13,45 @@ const profilePage = (req, res) => {
     });
 }
 
+// Delete Profile
+const profileDelete = (req, res) => {
+    User.remove({"_id": req.params.id}, (err, user) => {
+        if (err)
+            throw err;
+        res.render("index.ejs");
+    })
+}
+
 // Render Goals
 const goalsPage = (req, res) => {
     res.render('goals.ejs', {
-        user: req.user
+        user: req.user,
+        added: req.flash('added')
     });
 }
 
 // Posting Goals
 const goalsPost = (req, res) => {
+    var query = { '_id': req.params.id };
+    // req.newData.goals.goal = req.user.goal;
+
+    User.findOneAndUpdate(query, { email: '2test@test.email' }, { upsert: true }, (err, user) => {
+        if (err)
+            console.log(err)
+
+        console.log(user.local.goals)
+        req.flash('added', 'Goals Added'),
+        res.render('goals.ejs');
+    })
 }
 
 // Update Goals
 const goalsUpdate = (req, res) => {
 }
 
-// Delete Goals
+// Update Goals
 const goalsDelete = (req, res) => {
 }
-
 
 // TODO: Delete for prod - Just to have a view in the browser of the DB
 const userViews = (req, res) => {
@@ -77,6 +97,7 @@ const logout = (req, res) => {
 module.exports = {
     homePage,
     profilePage,
+    profileDelete,
     goalsPost,
     goalsUpdate,
     goalsDelete,
